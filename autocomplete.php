@@ -1,6 +1,6 @@
 <?php include "connection.php";
 
-$city = $_POST['city'];
+$city = $_POST['query'];
 
     
     $query = "SELECT * FROM city WHERE City LIKE '%$city%' ORDER BY city ASC";

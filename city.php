@@ -6,24 +6,18 @@ $city = $_POST['query'];
     $query = "SELECT * FROM city WHERE City LIKE '%$city%' ORDER BY city ASC";
     $result = mysqli_query($connection, $query);
     
-    $output = '';
-    
-    
- 
+    $cities = array();
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_array($result))  
            {  
-                $output .= '<li>'.$row["City"].'</li>';  
+                array_push($cities, $row['City']);
            }  
       }  
       else  
       {  
-           $output .= '<li>City Not Found</li>';  
+           $data['value'] = '<li>City Not Found</li>';  
       }  
-      $output .= '</ul>';  
-
-     
-      echo '<div id = "pro">'.$output.'</div>'; 
       
+      echo json_encode($cities); 
 
 ?>

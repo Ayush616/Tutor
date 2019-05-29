@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+
+    <!-- For search bar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+    
+    <div class="bgimg">
+       
+       <nav class="navbar fixed-top navbar-expand-md navbar-expand-md bg-light navbar-light">
+           
+           <div class="container">
+              <div class="brand">
+               <a href=""><img src="logo.png" width="150" height="56"></a>
+               </div>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar">
+                   <span class="navbar-toggler-icon"></span>
+               </button>
+               
+               <div class="collapse navbar-collapse text-center font-weight-bold" id="collapsenavbar">
+                   
+                   <ul class="navbar-nav">
+                       <li class="nav-item active">
+                           <a href="" class="nav-link text-black">SERVICES</a>
+                           
+                       </li>
+                       <li class="nav-item active">
+                           <a href="" class="nav-link text-black">ABCD</a> 
+                       </li>
+                       
+                       <li class="nav-item active">
+                           <a href="" class="nav-link text-black">ABOUT US</a>
+                           
+                       </li>
+                       
+                       <li class="nav-item active">
+                           <a href="" class="nav-link text-black">TEAM</a>
+                           
+                       </li>
+                       
+                       <li class="nav-item active">
+                           <a href="" class="nav-link text-black">CONTACT US</a>
+                           
+                       </li>
+                   </ul>
+                   <button class="btn btn-outline-success log" style="margin-left: 140px;"><i class="fa fa-user" aria-hidden="true"></i> Login</button>
+                   <button class="btn btn-outline-success log" style="margin-left: 15px;"><i class="fa fa-users" aria-hidden="true"></i> Sign Up</button>
+               </div>
+               
+           </div>
+           
+       </nav>
+        
+       <div class="container headerset text-white">
+            <h2>Find Best Tutors for you !</h2> 
+          <div class="row">
+                  
+                  <div class="transbox col-md-6">
+                       <div id="search">
+                         
+                         <div class="input-icons">
+                          <label for="city">Enter City Name</label>  
+                            <form class="example" action="action_page.php">
+                              <i class="fa fa-map-marker icon"></i> 
+                              <input type="text" class="input-field" placeholder="Enter your Location" name="city" id="city">
+                              <i class="fa fa-user icon"></i> 
+                              <input type="text" class="input-field" placeholder="Enter your Subject" name="city" id="">
+                              <button type="submit">Search</button>
+                              <div id="cityList"></div>  
+                            </form>  
+                          </div> 
+                            
+                        </div>
+                          
+                  </div>
+                  
+                  
+                  <div class="empty col-md-1">
+                     
+                  </div>
+                  
+                  <div class="transbox col-md-5">
+                       <div class="row">
+                            <div class="box">
+                               <center> 
+                               <p class="text-dark font-weight-bold">NEW TO TUTOR?</p>
+                               <button class="btn-danger">UPLOAD RESUME</button>
+                               
+                               <hr class="line">
+                               <button class="btn btn-outline-primary">REGISTER WITH US</button>
+                               </center>
+                               
+                               
+                            </div>
+                            
+                            <div class="box">
+                                <center> <button class="btn-danger">UPLOAD RESUME</button></center>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            
+                            
+                        </div>
+                  </div>
+              
+           </div>
+        
+       </div>    
+        
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+       
+    <script>
+      
+            
+            $(document).ready(function(){  
+                  $('#city').keyup(function(){  
+                       var query = $(this).val();  
+                       if(query != '')  
+                       {  
+                            $.ajax({  
+                                 url:"autocomplete.php",  
+                                 method:"POST",  
+                                 data:{query:query},  
+                                 success:function(data)  
+                                 {  
+                                      $('#cityList').fadeIn();  
+                                      $('#cityList').html(data);  
+                                 }  
+                            });  
+                       }  
+                  });  
+                  $(document).on('click', 'li', function(){  
+                       $('#city').val($(this).text());
+
+                       $('#cityList').fadeOut();  
+                  });  
+
+              
+             }); 
+        
+          $('input').click(function(){
+              
+              $('#cityList').css("display", "none");
+          });
+        
+      </script> 
+  </body>
+</html>
